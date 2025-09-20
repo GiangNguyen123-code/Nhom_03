@@ -18,3 +18,4 @@ public class Bai4 {
         sc.close();
     }
 }
+
