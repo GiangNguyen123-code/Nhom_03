@@ -1,23 +1,20 @@
+//Viết chương trình tính tổng các số từ 1 đến n.
 import java.util.Scanner;
 
 public class Bai4 {
-    public static void main(String[] args) {
+    public static int sumOfN(int n){
+    	int sum = 0;
+        for(int i = 1; i <= n; i++){
+        	sum += i;
+        }
+        return sum;
+    }
+    public static void main(String[] args){
+    	System.out.print("Nhap n: ");
         Scanner sc = new Scanner(System.in);
-
-        System.out.print("Nhap so tien gui: ");
-        double tienGui = sc.nextDouble();
-
-        System.out.print("Nhap lai suat hang nam (%): ");
-        double laiSuatNam = sc.nextDouble();
-
-        System.out.print("Nhap so thang gui: ");
-        int soThang = sc.nextInt();
-
-        double laiSuatThang = laiSuatNam / 12 / 100;
-        double tienLai = tienGui * laiSuatThang * soThang;
-        double tongTien = tienGui + tienLai;
-
-        System.out.println("Tien lai nhan duoc: " + tienLai);
-        System.out.println("Tong so tien: " + tongTien);
+        int n = sc.nextInt();
+        int sum = sumOfN(n);
+        System.out.println("Tong tu 1 den n la: " + sum);
+        sc.close();
     }
 }
