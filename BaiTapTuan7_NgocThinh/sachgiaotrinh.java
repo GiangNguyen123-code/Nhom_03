@@ -1,36 +1,43 @@
-public class sachgiaotrinh extends sach{
+public class sachgiaotrinh extends sach implements IKiemKe {
     private String monhoc;
     private String capdo;
-    public sachgiaotrinh(){
+
+    public sachgiaotrinh() {
         super();
     }
-    public sachgiaotrinh(String masach, String tieude, String tacgia, int namxuatban, int soluong, String monhoc, String capdo, double giacoban){
-        super(masach,tieude,tacgia,namxuatban,soluong,giacoban);
-        this.monhoc= monhoc;
-        this.capdo= capdo;
+
+    public sachgiaotrinh(String masach, String tieude, String tacgia, int namxuatban,int soluong, String monhoc, String capdo, double giacoban) {
+        super(masach, tieude, tacgia, namxuatban, soluong, giacoban);
+        this.monhoc = monhoc;
+        this.capdo = capdo;
     }
-    public void setmonhoc(String monhoc){
-        this.monhoc=monhoc;
-    }
-    public String getmonhoc(){
-        return monhoc;
-    }
-    public void setcapdo(String capdo){
-        this.capdo=capdo;
-    }
-    public String getcapdo(){
-        return capdo;
-    }
+
+    public void setmonhoc(String monhoc) { this.monhoc = monhoc; }
+    public String getmonhoc() { return monhoc; }
+
+    public void setcapdo(String capdo) { this.capdo = capdo; }
+    public String getcapdo() { return capdo; }
+
     @Override
-    public double tinhgiaban(){
-        int sonam = 2025 - namxuatban;
-        return giacoban + (sonam*5000);
+    public double tinhgiaban() {
+        return giacoban + (2025 - namxuatban) * 5000;
     }
-    @Override 
-    public void hienthithongtin(){
+
+    @Override
+    public void hienthithongtin() {
         super.hienthithongtin();
-        System.out.println("Mon hoc:"+monhoc);
-        System.out.println("Cap do:"+capdo);
-        System.out.println("Gia ban:"+tinhgiaban()+"VND");
+        System.out.println("Mon hoc: " + monhoc);
+        System.out.println("Cap do: " + capdo);
+        System.out.println("Gia ban uoc tinh: " + tinhgiaban() + " VND");
+    }
+
+    @Override
+    public boolean kiemTraTonKho(int soLuongToiThieu) {
+        return soluong >= soLuongToiThieu;
+    }
+
+    @Override
+    public void capNhatViTri(String viTriMoi) {
+        System.out.println("Da chuyen sach \"" + tieude + "\" den khu vuc: " + viTriMoi);
     }
 }
