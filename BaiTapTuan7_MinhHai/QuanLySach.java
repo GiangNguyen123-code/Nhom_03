@@ -68,7 +68,9 @@ public class QuanLySach {
         } else {
             for (Sach sach : books) {
                 sach.hienThiThongTin();
+                System.out.println("Gia ban uoc tinh: " + sach.tinhGiaBan() + " VND");
             }
+
         }
     }
 

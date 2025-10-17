@@ -11,9 +11,11 @@ public class Test {
             System.out.println("3. Tim kiem sach");
             System.out.println("4. Xoa sach");
             System.out.println("5. Cap nhat sach");
+            System.out.println("6. Kiem tra giao dien IKiemKe");
             System.out.println("0. Thoat");
             System.out.print("Chon chuc nang: ");
             String opt = sc.nextLine().trim();
+
             switch (opt) {
                 case "1":
                     keSach.themMoi();
@@ -32,6 +34,23 @@ public class Test {
                 case "5":
                     System.out.print("Nhap ma sach can cap nhat: ");
                     keSach.capNhatSach(sc.nextLine().trim());
+                    break;
+                case "6":
+                    // Phan kiem tra giao dien IKiemKe
+                    IKiemKe kiemKe = new SachGiaoTrinh(
+                            "GT01",
+                            "Lap trinh Java",
+                            "Nguyen Van A",
+                            2023,
+                            150,
+                            50000,
+                            "Cong nghe thong tin",
+                            "Dai hoc"
+                    );
+                    System.out.println("\n--- Kiem tra giao dien IKiemKe ---");
+                    boolean duTonKho = kiemKe.kiemTraTonKho(100);
+                    System.out.println("Sach du ton kho >= 100? " + duTonKho);
+                    kiemKe.capNhatViTri("Kho A1 - Ke 5");
                     break;
                 case "0":
                     System.out.println("Thoat chuong trinh.");
