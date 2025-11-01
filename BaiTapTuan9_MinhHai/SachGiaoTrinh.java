@@ -9,6 +9,10 @@ public class SachGiaoTrinh extends Sach implements IKiemKe {
         this.capDo = capDo;
     }
 
+    public SachGiaoTrinh() {
+        super();
+    }
+
     public String getMonHoc() { return monHoc; }
     public void setMonHoc(String monHoc) { this.monHoc = monHoc; }
     public String getCapDo() { return capDo; }
@@ -16,7 +20,8 @@ public class SachGiaoTrinh extends Sach implements IKiemKe {
 
     @Override
     public double tinhGiaBan() {
-        return getGiaCoBan() + (2025-getNamXuatBan())*5000;
+        double gia = getGiaCoBan() + (2025 - getNamXuatBan()) * 5000;
+        return Math.round(gia);
     }
 
     @Override
@@ -27,9 +32,10 @@ public class SachGiaoTrinh extends Sach implements IKiemKe {
         System.out.println("Cap do: " + capDo);
         System.out.println("Gia ban uoc tinh: " + tinhGiaBan() + " VND");
     }
+
     @Override
-    public String toString(){
-        return getMaSach()+','+getTieuDe()+','+getTacGia()+','+getNamXuatBan()+','+getSoLuong()+','+getGiaCoBan()+','+monHoc+','+capDo;
+    public String toString() {
+        return super.toString() + "," + monHoc + "," + capDo;
     }
 
     @Override
@@ -39,6 +45,24 @@ public class SachGiaoTrinh extends Sach implements IKiemKe {
 
     @Override
     public void capNhatViTri(String viTriMoi) {
-        System.out.println("Da chuyen sach " + getTieuDe() + "den khu vuc" + viTriMoi);
+        System.out.println("Da chuyen sach " + getTieuDe() + " den khu vuc " + viTriMoi);
+    }
+
+    @Override
+    public void Nhap() {
+        super.Nhap();
+        System.out.print("Nhap mon hoc: ");
+        monHoc = sc.nextLine();
+        System.out.print("Nhap cap do: ");
+        capDo = sc.nextLine();
+    }
+
+    @Override
+    public void Xuat() {
+        System.out.println("Sach giao trinh:");
+        super.Xuat();
+        System.out.println("Mon hoc: " + monHoc);
+        System.out.println("Cap do: " + capDo);
+        System.out.println("Gia ban uoc tinh: " + tinhGiaBan() + " VND");
     }
 }

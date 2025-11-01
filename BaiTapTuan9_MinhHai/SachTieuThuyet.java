@@ -9,6 +9,10 @@ public class SachTieuThuyet extends Sach implements IKiemKe {
         this.laSachSeries = laSachSeries;
     }
 
+    public SachTieuThuyet() {
+        super();
+    }
+
     public String getTheLoai() { return theLoai; }
     public void setTheLoai(String theLoai) { this.theLoai = theLoai; }
     public boolean isLaSachSeries() { return laSachSeries; }
@@ -16,15 +20,16 @@ public class SachTieuThuyet extends Sach implements IKiemKe {
 
     @Override
     public double tinhGiaBan() {
-        return isLaSachSeries() ? getGiaCoBan() * 1.15 : getGiaCoBan() * 1.10;
+        double gia = isLaSachSeries() ? getGiaCoBan() * 1.15 : getGiaCoBan() * 1.10;
+        return Math.round(gia);
     }
 
     @Override
     public void hienThiThongTin() {
-        System.out.println("Sach tieu thuyet");
+        System.out.println("Sach tieu thuyet:");
         super.hienThiThongTin();
         System.out.println("The loai: " + theLoai);
-        System.out.println("la series " + laSachSeries);
+        System.out.println("La sach series: " + laSachSeries);
         System.out.println("Gia ban: " + tinhGiaBan() + " VND");
     }
 
@@ -35,11 +40,30 @@ public class SachTieuThuyet extends Sach implements IKiemKe {
 
     @Override
     public void capNhatViTri(String viTriMoi) {
-        System.out.println("Da chuyen sach" + getTieuDe() + "den khu vuc: " + viTriMoi);
+        System.out.println("Da chuyen sach " + getTieuDe() + " den khu vuc " + viTriMoi);
     }
 
     @Override
-    public String toString(){
-        return getMaSach()+','+getTieuDe()+','+getTacGia()+','+getNamXuatBan()+','+getSoLuong()+','+getGiaCoBan()+','+theLoai+','+laSachSeries;
+    public String toString() {
+        return super.toString() + "," + theLoai + "," + laSachSeries;
+    }
+
+    @Override
+    public void Nhap() {
+        super.Nhap();
+        System.out.print("Nhap the loai: ");
+        theLoai = sc.nextLine();
+        System.out.print("Sach co phai series khong (true/false): ");
+        laSachSeries = sc.nextBoolean();
+        sc.nextLine();
+    }
+
+    @Override
+    public void Xuat() {
+        System.out.println("Sach tieu thuyet:");
+        super.Xuat();
+        System.out.println("The loai: " + theLoai);
+        System.out.println("La sach series: " + laSachSeries);
+        System.out.println("Gia ban: " + tinhGiaBan() + " VND");
     }
 }
